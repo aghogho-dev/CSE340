@@ -336,5 +336,15 @@ async function processUpdateAccount(req, res, next) {
 }
 
 
+function processLogout(req, res, next) {
+    res.clearCookie(
+        "jwt",
+        { httpOnly: true, secure: true }
+    )
 
-module.exports = { buildLogin, buildRegister, registerAccount, processLogin, buildAccountManagement, buildUpdateAccount, processUpdateAccount }
+    return res.redirect("/")
+}
+
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, processLogin, buildAccountManagement, buildUpdateAccount, processUpdateAccount, processLogout }

@@ -38,4 +38,7 @@ router.post("/update/",
     utilities.handleErrors(accountController.processUpdateAccount))
 
 
+router.get("/logout/", utilities.handleErrors(accountController.processLogout))
+
+
 module.exports = router;
