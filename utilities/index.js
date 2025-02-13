@@ -403,4 +403,79 @@ Util.checkAdmin = (req, res, next) => {
 }
 
 
+// Util.buildUpdateAccountForm = async function (data) {
+
+//     let addInvForm;
+
+//     if (data) {
+
+//         addInvForm = '<section id="login-signup">'
+//         addInvForm += `<form action="/account/update" id="login-signup-form" method="post">`
+//         addInvForm += `<label for="account_firstname"><span class="form-element">First Name:</span></label>`
+//         addInvForm += ` <input type="text" name="account_firstname" id="account_firstname" required value="${data.account_firstname}">`
+//         addInvForm += `<label for="account_lastname"><span class="form-element">Last Name:</span></label>`
+//         addInvForm += `<input type="text" name="account_lastname" id="account_lastname" required value="${data.account_lastname}">`
+//         addInvForm += `<label for="account_email"><span class="form-element">Email:</span></label>`
+//         addInvForm += `<input type="email" name="account_email" id="account_email" required value="${data.account_email}">`
+
+//         addInvForm += `<div id="pswd-box">`
+//         addInvForm += `<label for="account_password"><span class="form-element">Password:</span></label>`
+//         addInvForm += `<span id="pswd-text">Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character</span>`
+//         addInvForm += `<input type="password" name="account_password" id="account_password" minlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character." required>`
+//         addInvForm += `</div>`
+    
+//         addInvForm += `<button type="submit" id="register-button">Update</button>`
+//         addInvForm += `<button id="show-hide" type="button">Show Password</button>`
+//         addInvForm += `</form>`
+//         addInvForm += `</section>`
+
+//     }
+//     return addInvForm
+// }
+    
+
+Util.buildUpdateAccountForm = async function (data) {
+
+    let addInvForm;
+
+    if (data) {
+
+        addInvForm = '<section id="login-signup">'
+        addInvForm += `<form action="/account/update" id="login-signup-form" method="post">`
+        addInvForm += `<label for="account_firstname"><span class="form-element">First Name:</span></label>`
+        addInvForm += ` <input type="text" name="account_firstname" id="account_firstname" required value="${data.account_firstname}">`
+        addInvForm += `<label for="account_lastname"><span class="form-element">Last Name:</span></label>`
+        addInvForm += `<input type="text" name="account_lastname" id="account_lastname" required value="${data.account_lastname}">`
+        addInvForm += `<label for="account_email"><span class="form-element">Email:</span></label>`
+        addInvForm += `<input type="email" name="account_email" id="account_email" required value="${data.account_email}">`
+
+        addInvForm += `<div id="pswd-box">`
+        addInvForm += `<label for="account_password"><span class="form-element">Password:</span></label>`
+        addInvForm += `<span id="pswd-text">Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character</span>`
+        addInvForm += `<input type="password" name="account_password" id="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{12,}$" title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character." required>`
+        addInvForm += `</div>`
+
+        addInvForm += `<button type="submit" id="register-button">Update</button>`
+        addInvForm += `<button id="show-hide" type="button">Show Password</button>`
+        addInvForm += `</form>`
+        addInvForm += `</section>`
+
+    }
+    return addInvForm
+}
+
+    
+    
+    
+    
+        
+        
+        
+       
+          
+       
+    
+
+
+
 module.exports = Util

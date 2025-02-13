@@ -65,10 +65,14 @@ app.use((req, res, next) => {
   if (token) {
       try {
           const userData = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+          console.log("Print User Data")
+          console.log(userData)
           
           res.locals.clientLoggedIn = true;
           res.locals.yourName = userData.account_firstname || "Basic";
           res.locals.accountType = userData.account_type
+          res.locals.accountId = userData.account_id
       } catch (err) {
           res.locals.clientLoggedIn = false;
           res.locals.yourName = "Guest";

@@ -30,4 +30,12 @@ router.get(
     utilities.handleErrors(accountController.buildAccountManagement));
 
 
+router.get("/edit/:account_id", utilities.handleErrors(accountController.buildUpdateAccount))
+
+router.post("/update/", 
+    regValidate.editRules(),
+    regValidate.checkEditData,
+    utilities.handleErrors(accountController.processUpdateAccount))
+
+
 module.exports = router;
