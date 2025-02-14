@@ -11,7 +11,9 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByDetailInventoryId));
 
 // Route to get inventory management view
-router.get("/", utilities.handleErrors(invController.buildManagement))
+router.get("/", 
+    utilities.checkAdmin,
+    utilities.handleErrors(invController.buildManagement))
 
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
@@ -57,6 +59,14 @@ router.get("/delete/:inv_id",
 router.post("/delete/", 
     utilities.checkAdmin,
     utilities.handleErrors(invController.deleteInventory))
+
+
+
+router.get("/cart/:inv_id", utilities.handleErrors(invController.getInventoryByInvIdJSON))
+
+// router.get("/cart", utilities.handleErrors(buildCart))
+
+// router.post("/cart", utilities.handleErrors(invController.postCart))
 
 
 module.exports = router;
