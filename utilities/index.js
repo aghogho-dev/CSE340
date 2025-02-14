@@ -98,6 +98,7 @@ Util.buildDetail = async function(data) {
         grid += '<p><span class="deliver-bold">Description:</span> ' + vehicle.inv_description + '</p>'
         grid += '<p><span class="deliver-bold">Color:</span> ' + vehicle.inv_color + '</p>'
         grid += '<p><span class="deliver-bold">Miles:</span> ' + vehicle.inv_miles.toLocaleString('en-US') + '</p>'
+        grid += `<button class="add-to-cart" data-id=${vehicle.inv_id}>Add to Cart</button>`
         grid += '</div>'
         grid += '</div>'
     } else {

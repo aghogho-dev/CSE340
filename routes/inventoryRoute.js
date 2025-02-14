@@ -64,9 +64,12 @@ router.post("/delete/",
 
 router.get("/cart/:inv_id", utilities.handleErrors(invController.getInventoryByInvIdJSON))
 
-// router.get("/cart", utilities.handleErrors(buildCart))
+router.post("/cart", utilities.handleErrors(invController.processCartData));
 
-// router.post("/cart", utilities.handleErrors(invController.postCart))
+router.get("/cart", utilities.handleErrors(invController.buildCart))
+
+
+
 
 
 module.exports = router;

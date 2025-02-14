@@ -1,0 +1,36 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else {
+      res.redirect('/')
+  } %>
+  
+ 
+  <%- messages() %>
+ 
+  
+<div class="cart-container">
+
+    <% let totalPrice = 0; %>
+
+    <% addCart.forEach(itemGroup => { %>
+        <% itemGroup.forEach(item => { %>
+            <div class="cart-item">
+                <img src="<%= item.inv_thumbnail %>" alt="<%= item.inv_make %>">
+                <div class="cart-item-details">
+                    <p><%= item.inv_make %> <%= item.inv_model %></p>
+                    <p>Quantity: <%= item.quantity %></p>
+                </div>
+                <div class="cart-item-price">
+                    $<%= (item.inv_price * item.quantity).toLocaleString() %>
+                </div>
+            </div>
+            <% totalPrice += item.inv_price * item.quantity; %>
+        <% }); %>
+    <% }); %>
+
+    <div class="total-price">
+        Total: $<%= totalPrice.toLocaleString() %>
+    </div>
+</div>
+
+<script src="../../js/cart-server.js"></script>

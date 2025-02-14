@@ -383,6 +383,50 @@ invCont.deleteInventory = async function (req, res, next) {
 
 
 
+invCont.getInventoryByInvIdJSON = async (req, res, next) => {
+    console.log("Inside GET INventory by inv id json")
+    const inv_id = parseInt(req.params.inv_id)
+    const invData = await invModel.getInventoryByInventoryId(inv_id)
 
+    console.log("Get Inventory by Inventory ID")
+    console.log(invData)
+
+    if (invData[0].inv_id) {
+        return res.json(invData)
+    } else {
+        next(new Error("No data returned"))
+    }
+}
+
+invCont.buildCart = async (req, res, next) => {
+
+    console.log("\n\nInside Build Cart\n\n")
+    
+    const nav = await utilities.getNav()
+
+    const cart = req.session.cart || [];
+
+    console.log("\n\n\nCart inside build carty")
+    console.log(cart)
+    console.log("\n\n\n")
+   
+    
+    res.render("./inventory/cart", {
+        title: "Your Cart",
+        nav,
+        addCart: cart,
+    })
+}
+
+invCont.processCartData = (req, res, next) => {
+
+    console.log("\n\n\nInside Process Cart Data\n\n\n")
+
+    if (req.body.cart) {
+        req.session.cart = req.body.cart;
+    }
+
+    next();
+};
 
 module.exports = invCont
